@@ -6,6 +6,8 @@ function App() {
     //let email = 'lbiernacki@agh.edu.pl';
     const [email, setEmail] = useState('fracz@agh.edu.pl');
     //const [message, setMessage] = useState("");
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    let content;
 
     function handleChange(event) {
             //console.log(event.target.value);
@@ -14,27 +16,27 @@ function App() {
             // setMessage =
         }
 
-    function displayEmail() {
-        alert(email);
-    }
-
     let message;
 
-    if (email.length < 10) {
-        message = <p>"Ale masz któtki mail"</p>;
-    } else if (email.length >= 10 && email.length <15) {
-        message = <p>"Tówj email jest w sam raz"</p>;
+    if (isAuthenticated) {
+        content =
+                <div>
+                    <h2>Twój email to {email}</h2>
+                    <button onClick={() => setIsAuthenticated(false)}>Wyloguj się</button>
+                </div>
     } else {
-        message = <p>"Tówj email jest stanowczo za długi"</p>;
+        content =
+                <div>
+                <label htmlFor="email">Zaloguj się emailem </label>
+                <input type="text" id="email" onChange={handleChange}/>
+                <button onClick={() => setIsAuthenticated(true)}>Wchodzę</button>
+                </div>
     }
 
   return (
     <div>
-         <h1>System do zapisów na zajęcia</h1>
-          <h2>Twój e-mail to {email}</h2>
-          {message}
-          <input type="text" value={email} onChange={handleChange}/>
-          <button onClick={displayEmail}>Wyświetl mój e-mail</button>
+         <h1>Witaj w systemie do zapisów na zajęcia</h1>
+          {content}
     </div>
   );
 }
