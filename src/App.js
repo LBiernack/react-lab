@@ -5,11 +5,18 @@ import {useState} from "react";
 function App() {
     //let email = 'lbiernacki@agh.edu.pl';
     const [email, setEmail] = useState('fracz@agh.edu.pl');
+    //const [message, setMessage] = useState("");
 
     function handleChange(event) {
             //console.log(event.target.value);
             setEmail(event.target.value);
+            //if (event.target.value.length > 10 {
+            // setMessage =
         }
+
+    function displayEmail() {
+        alert(email);
+    }
 
     let message;
 
@@ -27,6 +34,7 @@ function App() {
           <h2>Twój e-mail to {email}</h2>
           {message}
           <input type="text" value={email} onChange={handleChange}/>
+          <button onClick={displayEmail}>Wyświetl mój e-mail</button>
     </div>
   );
 }
